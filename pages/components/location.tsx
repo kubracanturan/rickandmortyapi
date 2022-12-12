@@ -4,7 +4,7 @@ import { Card, List, Skeleton, Input } from 'antd';
 
 export default class LocationList extends React.Component {
   state = {
-    locations: [],
+    locations: ([] as any[]),
     loading: true,
   }
 

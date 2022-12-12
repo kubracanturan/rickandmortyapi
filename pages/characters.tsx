@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import styles from '../styles/Home.module.scss'
 import CharacterList from './components/characters';
-import Header from './components/header.tsx';
+import Header from './components/header';
 
 
 export default function Characters() {

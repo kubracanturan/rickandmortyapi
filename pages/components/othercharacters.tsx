@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import Image from 'next/image'
 import { Card, List } from 'antd';
+import Link from 'next/link'
 
 
 
 export default class OtherCharacterList extends React.Component {
   state = {
-    characters: [],
+    characters: ([] as any[]),
   }
 
   componentDidMount() {
@@ -29,9 +31,9 @@ export default class OtherCharacterList extends React.Component {
                 renderItem={(character) => (
                     <List.Item key={character.id}>
                         <Card className='characterCard'>
-                            <a href={`/profile/?id=${character.id}`}>
-                                <img src={character.image} alt="{character.name}"  />
-                            </a>
+                            <Link href={`/profile/?id=${character.id}`}>
+                            <img src={character.data.image} alt={character.data.name}  />
+                            </Link>
                                 <h3>{character.name}</h3>
                                 <p><span className={character.status}></span> {character.status} - {character.species}</p>
                             

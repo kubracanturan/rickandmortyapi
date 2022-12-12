@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import styles from '../styles/Home.module.scss'
-import LocationList from './components/location.tsx';
-import Header from './components/header.tsx';
+import LocationList from './components/location';
+import Header from './components/header';
 
 
 export default function Home() {

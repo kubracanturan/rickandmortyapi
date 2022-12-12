@@ -2,7 +2,7 @@ import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.scss'
 import Profile from './components/profile';
-import Header from './components/header.tsx';
+import Header from './components/header';
 
 
 export default function Home() {

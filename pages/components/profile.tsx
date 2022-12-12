@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import Image from 'next/image'
 import OtherCharacterList from '../components/othercharacters';
 import { HomeOutlined, UserOutlined } from '@ant-design/icons';
 import { Row, Col, Breadcrumb } from 'antd';
 
 export default class CharacterList extends React.Component {
   state = {
-    characters: [],
-    profile: [],
+    characters: ([] as any),
+    profile: ([] as any),
   }
   componentDidMount() {
     let characterId = (new URLSearchParams(window.location.search)).get("id")
@@ -16,7 +17,9 @@ export default class CharacterList extends React.Component {
       .then(res => {
         const profile = res.data;
         this.setState({ profile });
-    })
+    }).catch(error => {
+      return error;
+    });
     
   }
 
@@ -36,7 +39,7 @@ export default class CharacterList extends React.Component {
           <div className="ProfileCard">
             <Row gutter={[16, 22]}>
               <Col xs={{ span: 24 }} lg={{ span: 12 }}>
-              <img src={this.state.profile.image} alt={this.state.profile.name}  />
+              <img src={this.state.profile.image} alt={this.state.profile.name}   />
               </Col>
               <Col xs={{ span: 24 }} lg={{ span: 12}}>
                 <h2>{this.state.profile.name}</h2>

@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import Image from "next/image";
+import Link from 'next/link';
 import { HomeOutlined, UserOutlined } from '@ant-design/icons';
 import { Card, List, Radio, Skeleton, Input, Breadcrumb } from 'antd';
 
@@ -7,9 +9,9 @@ import { Card, List, Radio, Skeleton, Input, Breadcrumb } from 'antd';
 
 export default class CharacterList extends React.Component {
   state = {
-    characters: [],
-    locationResidents: [],
-    charactersFilt: [],
+    characters: ([] as any[]),
+    locationResidents: ([] as any[]),
+    charactersFilt: ([] as any[]),
     value: 1,
     loading: true,
   }
@@ -17,7 +19,7 @@ export default class CharacterList extends React.Component {
   componentDidMount() {
     const self = this;
     let LocationId = (new URLSearchParams(window.location.search)).get("id")
-    if(LocationId == null ) { LocationId = 1 };
+    if(LocationId == null ) { LocationId = "1" };
     axios.get(`https://rickandmortyapi.com/api/location/` + LocationId)
       .then(res => {
         const locationResidents = res.data.residents;
@@ -74,9 +76,9 @@ export default class CharacterList extends React.Component {
                     <List.Item key={character.data.id}>
                         <Card className='characterCard'>
                             <Skeleton loading={loading} active title={false} paragraph={{ rows: 2 }} ></Skeleton>
-                            <a href={`/profile/?id=${character.data.id}`}>
-                                <img src={character.data.image} alt="{character.data.name}"  />
-                            </a>
+                            <Link href={`/profile/?id=${character.data.id}`}>
+                            <img src={character.data.image} alt={character.data.name}   />
+                            </Link>
                                 <h3>{character.data.name}</h3>
                                 <p><span className={character.data.status}></span> {character.data.status} - {character.data.species}</p>
                             
