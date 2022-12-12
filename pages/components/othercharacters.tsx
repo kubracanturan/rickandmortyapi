@@ -32,7 +32,7 @@ export default class OtherCharacterList extends React.Component {
                     <List.Item key={character.id}>
                         <Card className='characterCard'>
                             <Link href={`/profile/?id=${character.id}`}>
-                            <img src={character.data.image} alt={character.data.name}  />
+                            <img src={character.image} alt={character.name}  />
                             </Link>
                                 <h3>{character.name}</h3>
                                 <p><span className={character.status}></span> {character.status} - {character.species}</p>
